@@ -1,0 +1,301 @@
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc dfa.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter number of states: 3
+
+Enter number of input symbols: 2
+Enter input  alphabets: ab
+
+Enter number of final states: 1
+Enter the final states: 1
+
+Enter transition details:
+From q0 for a : 1
+From q0 for b : 2
+From q1 for a : 1
+From q1 for b : 1
+From q2 for a : 2
+From q2 for b : 2
+
+Enter input string or 'exit' for exiting: aab
+
+String is accepted
+
+Enter input string or 'exit' for exiting: babba
+
+ String is rejected
+
+Enter input string or 'exit' for exiting: exit
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc Eliminate.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out eliminationDemo.c eliminationOut.c
+Whitespaces and Comments from eliminationDemo.c is removed and is written into eliminationOut.c
+
+eliminationDemo.c
+/*A Simple Program
+to print Hello World*/
+
+#include<stdio.h>
+
+void main()
+{
+	//Printing
+	printf("Hello World!\n");
+}
+
+eliminationOut.c
+#include<stdio.h>voidmain(){printf("HelloWorld!\n");}
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc LexicalAnalyser.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out lexInput.c lexOut
+Lexical Analysis is done on lexInput.c and output is written into lexOut.txt
+
+lexInput.c
+#include<stdio.h>
+
+void main()
+{
+	int a, b, c;
+	c = a + b;
+}
+
+lexOut.txt
+Sl No		Lexeme		Token   		Line No
+------------------------------------------------------------------
+1		#		Special_char		1
+2		include		Keyword   		1
+3		<		Relat_op		1
+4		stdio.h		Keyword   		1
+5		>		Relat_op		1
+6		void		Keyword   		3
+7		main		Keyword   		3
+8		(		Open_bracket		3
+9		)		Close_bracket		3
+10		{		Open_bracket		4
+11		int		Keyword   		5
+12		a		Identifier		5
+13		,		Special_char		5
+14		b		Identifier		5
+15		,		Special_char		5
+16		c		Identifier		5
+17		;		Semi-colon		5
+18		c		Identifier		6
+19		=		Assign_op		6
+20		a		Identifier		6
+21		+		Arith_op		6
+22		b		Identifier		6
+23		;		Semi-colon		6
+24		}		Close_bracket		7
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ lex lexical.l 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc lex.yy.c
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out lexInput.c lexOut
+Lexical Analysis is done on lexInput.c and output is written into lexOut.txt
+
+lexInput.c
+#include<stdio.h>
+
+void main()
+{
+	int a, b, c;
+	c = a + b;
+}
+
+lexOut
+Sl No		Lexeme		Token   		Line No
+------------------------------------------------------------------
+1		#		Special Char		1
+2		include		Keyword   		1
+3		<		Relational_op		1
+4		stdio.h		Keyword   		1
+5		>		Relational_op		1
+6		void		Keyword   		3
+7		main		Keyword   		3
+8		(		Opening Bracket		3
+9		)		Closing Bracket		3
+10		{		Opening Bracket		4
+11		int		Keyword   		5
+12		a		Identifier		5
+13		,		Special Char		5
+14		b		Identifier		5
+15		,		Special Char		5
+16		c		Identifier		5
+17		;		Semicolon		5
+18		c		Identifier		6
+19		=		Assign_op		6
+20		a		Identifier		6
+21		+		Arithmetic_op		6
+22		b		Identifier		6
+23		;		Semicolon		6
+24		}		Closing Bracket		7
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ lex eliminate.l 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc lex.yy.c
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out eliminationDemo.c eliminationOut.c 
+Whitespaces and Comments from eliminationDemo.c is removed and is written into eliminationOut.c
+
+eliminationDemo.c
+/*A Simple Program
+to print Hello World*/
+
+#include<stdio.h>
+
+void main()
+{
+	//Printing
+	printf("Hello World!\n");
+}
+
+eliminationOut.c
+#include<stdio.h>voidmain(){printf("HelloWorld!\n");}
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc rdParser.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter input: i*(i+i)
+Expanding E -> TE1
+Expanding T -> FT1
+Expanding F -> i
+Consuming i
+Expanding T1 -> *FT1
+Consuming *
+Expanding F -> (E)
+Consuming (
+Expanding E -> TE1
+Expanding T -> FT1
+Expanding F -> i
+Consuming i
+Expanding T1 -> eps
+Expanding E1 -> +TE1
+Consuming +
+Expanding T -> FT1
+Expanding F -> i
+Consuming i
+Expanding T1 -> eps
+Expanding E1 -> eps
+Consuming )
+Expanding T1 -> eps
+Expanding E1 -> eps
+
+Input is accepted
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter input: i*+i
+Expanding E -> TE1
+Expanding T -> FT1
+Expanding F -> i
+Consuming i
+Expanding T1 -> *FT1
+Consuming *
+
+Input is rejected
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc opParser.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter number of terminals: 6
+Enter the terminals:
++ * ( ) i $
+Enter the OP Table
++ - +: >
++ - *: <
++ - (: <
++ - ): >
++ - i: <
++ - $: >
+* - +: >
+* - *: >
+* - (: <
+* - ): >
+* - i: <
+* - $: >
+( - +: <
+( - *: <
+( - (: <
+( - ): =
+( - i: <
+( - $: -
+) - +: >
+) - *: >
+) - (: -
+) - ): >
+) - i: -
+) - $: >
+i - +: >
+i - *: >
+i - (: -
+i - ): >
+i - i: -
+i - $: >
+$ - +: <
+$ - *: <
+$ - (: <
+$ - ): -
+$ - i: <
+$ - $: -
+Enter input (including $ on both ends) or 'exit' to exit: $i*(i+i)$
+
+Input accepted
+
+Enter input (including $ on both ends) or 'exit' to exit: $)i+i)$
+
+Input rejected
+
+Enter input (including $ on both ends) or 'exit' to exit: exit
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc srParser.c 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter input: i*(i+i)
+
+Sl No	Stack	Input     	Action
+------------------------------------------------
+1	$	i*(i+i)$	-
+2	$i	 *(i+i)$	Shift i
+3	$E	 *(i+i)$	Reduce E -> i
+4	$E*	  (i+i)$	Shift *
+5	$E*(	   i+i)$	Shift (
+6	$E*(i	    +i)$	Shift i
+7	$E*(E	    +i)$	Reduce E -> i
+8	$E*(E+	     i)$	Shift +
+9	$E*(E+i	      )$	Shift i
+10	$E*(E+E	      )$	Reduce E -> i
+11	$E*(E	      )$	Reduce E -> E+E
+12	$E*(E)	       $	Shift )
+13	$E*E	       $	Reduce E -> (E)
+14	$E	       $	Reduce E -> E*E
+
+Input accepted
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter input: i+i*
+
+Sl No	Stack	Input     	Action
+------------------------------------------------
+1	$	i+i*$		-
+2	$i	 +i*$		Shift i
+3	$E	 +i*$		Reduce E -> i
+4	$E+	  i*$		Shift +
+5	$E+i	   *$		Shift i
+6	$E+E	   *$		Reduce E -> i
+7	$E	   *$		Reduce E -> E+E
+8	$E*	    $		Shift *
+
+Input rejected
+
+*
+
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ lex calculator.l 
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ gcc lex.yy.c -lm
+ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
+Enter expression: 2 + 3 * 5
+Result = 25
+

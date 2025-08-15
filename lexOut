@@ -1,0 +1,26 @@
+Sl No		Lexeme		Token   		Line No
+------------------------------------------------------------------
+1		#		Special Char		1
+2		include		Keyword   		1
+3		<		Relational_op		1
+4		stdio.h		Keyword   		1
+5		>		Relational_op		1
+6		void		Keyword   		3
+7		main		Keyword   		3
+8		(		Opening Bracket		3
+9		)		Closing Bracket		3
+10		{		Opening Bracket		4
+11		int		Keyword   		5
+12		a		Identifier		5
+13		,		Special Char		5
+14		b		Identifier		5
+15		,		Special Char		5
+16		c		Identifier		5
+17		;		Semicolon		5
+18		c		Identifier		6
+19		=		Assign_op		6
+20		a		Identifier		6
+21		+		Arithmetic_op		6
+22		b		Identifier		6
+23		;		Semicolon		6
+24		}		Closing Bracket		7
