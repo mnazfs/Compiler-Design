@@ -299,3 +299,167 @@ ubuntu@ubuntu:~/Desktop/Compiler Lab$ ./a.out
 Enter expression: 2 + 3 * 5
 Result = 25
 
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ lex simpleCalculatorYacc.y 
+simpleCalculatorYacc.y:6: unrecognized '%' directive
+simpleCalculatorYacc.y:11: unrecognized rule
+simpleCalculatorYacc.y:11: unrecognized rule
+simpleCalculatorYacc.y:11: unrecognized rule
+simpleCalculatorYacc.y:14: unrecognized rule
+simpleCalculatorYacc.y:14: unrecognized rule
+simpleCalculatorYacc.y:14: unrecognized rule
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ yacc simpleCalculatorYacc.y 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc y.tab.c
+y.tab.c: In function ‘yyparse’:
+y.tab.c:1016:16: warning: implicit declaration of function ‘yylex’ [-Wimplicit-function-declaration]
+ 1016 |       yychar = yylex ();
+      |                ^~~~~
+y.tab.c:1187:7: warning: implicit declaration of function ‘yyerror’; did you mean ‘yyerrok’? [-Wimplicit-function-declaration]
+ 1187 |       yyerror (YY_("syntax error"));
+      |       ^~~~~~~
+      |       yyerrok
+simpleCalculatorYacc.y: At top level:
+simpleCalculatorYacc.y:24:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   24 | yylex()
+      | ^~~~~
+simpleCalculatorYacc.y:35:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   35 | yyerror()
+      | ^~~~~~~
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter expression: 2+3*5
+Result= 17
+
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ lex advancedCalculatorYacc.y 
+advancedCalculatorYacc.y:6: unrecognized '%' directive
+advancedCalculatorYacc.y:7: unrecognized '%' directive
+advancedCalculatorYacc.y:8: unrecognized '%' directive
+advancedCalculatorYacc.y:9: bad character: %
+advancedCalculatorYacc.y:9: unknown error processing section 1
+advancedCalculatorYacc.y:9: unknown error processing section 1
+advancedCalculatorYacc.y:9: unknown error processing section 1
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:14: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:15: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:16: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:17: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:18: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+advancedCalculatorYacc.y:19: unrecognized rule
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ yacc advancedCalculatorYacc.y 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc y.tab.c 
+y.tab.c: In function ‘yyparse’:
+y.tab.c:1025:16: warning: implicit declaration of function ‘yylex’ [-Wimplicit-function-declaration]
+ 1025 |       yychar = yylex ();
+      |                ^~~~~
+y.tab.c:1208:7: warning: implicit declaration of function ‘yyerror’; did you mean ‘yyerrok’? [-Wimplicit-function-declaration]
+ 1208 |       yyerror (YY_("syntax error"));
+      |       ^~~~~~~
+      |       yyerrok
+advancedCalculatorYacc.y: At top level:
+advancedCalculatorYacc.y:27:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   27 | yylex()
+      | ^~~~~
+advancedCalculatorYacc.y:38:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   38 | yyerror()
+      | ^~~~~~~
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter expression: 2*(6/3)
+Result = 4
+
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ lex variableValidation.y 
+variableValidation.y:6: unrecognized '%' directive
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:11: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:14: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:15: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+variableValidation.y:16: unrecognized rule
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ yacc variableValidation.y 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc y.tab.c 
+y.tab.c: In function ‘yyparse’:
+y.tab.c:1016:16: warning: implicit declaration of function ‘yylex’ [-Wimplicit-function-declaration]
+ 1016 |       yychar = yylex ();
+      |                ^~~~~
+y.tab.c:1157:7: warning: implicit declaration of function ‘yyerror’; did you mean ‘yyerrok’? [-Wimplicit-function-declaration]
+ 1157 |       yyerror (YY_("syntax error"));
+      |       ^~~~~~~
+      |       yyerrok
+variableValidation.y: At top level:
+variableValidation.y:24:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   24 | yylex()
+      | ^~~~~
+variableValidation.y:35:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   35 | yyerror()
+      | ^~~~~~~
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter variable: a23
+Valid
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter variable: 23a
+Invalid
+
