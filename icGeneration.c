@@ -55,6 +55,7 @@ void main()
 	
 	i = 0;
 	int sl = 1;
+	printf("\nThree Address Code\n");
 	while(postfix[i] != '\0') {
 		char ch = postfix[i];
 		if(isalpha(ch))
@@ -70,6 +71,54 @@ void main()
 				printf("t%d = t%c %c %c\n", sl, ch1, ch, ch2);
 			else if(isdigit(ch1) && isdigit(ch2))
 				printf("t%d = t%c %c t%c\n", sl, ch1, ch, ch2);
+			push(sl + '0');
+			sl++;
+		}
+		i++;
+	}
+	
+	i = 0;
+	sl = 1;
+	printf("\nQuadruples\nOp\targ1\targ2\tResult\n");
+	while(postfix[i] != '\0') {
+		char ch = postfix[i];
+		if(isalpha(ch))
+			push(ch);
+		else {
+			char ch2 = pop();
+			char ch1 = pop();
+			if(isalpha(ch1) && isalpha(ch2))
+				printf("%c\t%c\t%c\tt%d\n", ch, ch1, ch2, sl);
+			else if(isalpha(ch1) && isdigit(ch2))
+				printf("%c\t%c\tt%c\tt%d\n", ch, ch1, ch2, sl);
+			else if(isdigit(ch1) && isalpha(ch2))
+				printf("%c\tt%c\t%c\tt%d\n", ch, ch1, ch2, sl);
+			else if(isdigit(ch1) && isdigit(ch2))
+				printf("%c\tt%c\tt%c\tt%d\n", ch, ch1, ch2, sl);
+			push(sl + '0');
+			sl++;
+		}
+		i++;
+	}
+	
+	i = 0;
+	sl = 1;
+	printf("\nTriples\n \tOp\targ1\targ2\n");
+	while(postfix[i] != '\0') {
+		char ch = postfix[i];
+		if(isalpha(ch))
+			push(ch);
+		else {
+			char ch2 = pop();
+			char ch1 = pop();
+			if(isalpha(ch1) && isalpha(ch2))
+				printf("(%d)\t%c\t%c\t%c\n", sl - 1, ch, ch1, ch2);
+			else if(isalpha(ch1) && isdigit(ch2))
+				printf("(%d)\t%c\t%c\t(%c)\n", sl - 1, ch, ch1, ch2 - 1);
+			else if(isdigit(ch1) && isalpha(ch2))
+				printf("(%d)\t%c\t(%c)\t%c\n", sl - 1, ch, ch1 - 1, ch2);
+			else if(isdigit(ch1) && isdigit(ch2))
+				printf("(%d)\t%c\t(%c)\t(%c)\n", sl - 1, ch, ch1 - 1, ch2 - 1);
 			push(sl + '0');
 			sl++;
 		}
