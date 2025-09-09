@@ -463,3 +463,29 @@ student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
 Enter variable: 23a
 Invalid
 
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc icGeneration.c 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter expression: a+b*c-d/e
+
+Three Address Code
+t1 = b * c
+t2 = a + t1
+t3 = d / e
+t4 = t2 - t3
+
+Quadruples
+Op	arg1	arg2	Result
+*	b	c	t1
++	a	t1	t2
+/	d	e	t3
+-	t2	t3	t4
+
+Triples
+ 	Op	arg1	arg2
+(0)	*	b	c
+(1)	+	a	(0)
+(2)	/	d	e
+(3)	-	(1)	(2)
+
