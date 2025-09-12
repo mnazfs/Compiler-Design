@@ -489,3 +489,56 @@ Triples
 (2)	/	d	e
 (3)	-	(1)	(2)
 
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc assemblyCodeGenerator.c 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
+Enter expression: x+y*z
+Enter starting address: 2000
+
+2000: MOV A, x
+2001: PUSH A
+2002: MOV A, y
+2003: PUSH A
+2004: MOV A, z
+2005: PUSH A
+2006: POP B
+2007: POP A
+2008: MUL B
+2009: PUSH A
+2010: POP B
+2011: POP A
+2012: ADD B
+2013: PUSH A
+2014: POP A
+2015: HLT
+
+*
+
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ gcc paranthesisBalanceCheck.c 
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out paranthesisCheckDemoCorrect.c 
+Paranthesis is balanced
+student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out paranthesisCheckDemoWrong.c 
+Paranthesis mismatch { ) at line 6
+Closing bracket missing for { at line 9
+
+paranthesisCheckDemoCorrect.c
+#include<stdio.h>
+
+void main ()
+{
+	int a = 2, b =3;
+	if(a != b)
+		printf("Mismatch\n");
+}
+
+paranthesisCheckDemoWrong.c
+#include<stdio.h>
+
+void main ()
+{
+	int a = 2, b =3;
+	if a != b)
+		printf("Mismatch\n");
+
+*
