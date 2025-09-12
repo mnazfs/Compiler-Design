@@ -27,6 +27,7 @@ int priority(char x)
 		return 2;
 	return 0;
 }
+
 void main()
 {
 	char input[25], postfix[25], *e, x;
