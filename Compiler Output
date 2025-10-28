@@ -401,9 +401,7 @@ advancedCalculatorYacc.y:27:1: warning: return type defaults to ‘int’ [-Wimp
 advancedCalculatorYacc.y:38:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
    38 | yyerror()
       | ^~~~~~~
-student@admincse-Lenovo-V330-15IKB:~/Desktop/Naseef$ ./a.out
-Enter expression: 2*(6/3)
-Result = 4
+	
 
 *
 

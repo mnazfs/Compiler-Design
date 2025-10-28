@@ -1,14 +1,11 @@
 #include<stdio.h>
 #include<ctype.h>
-
 char stack[100];
 int top = -1;
-
 void push(char x)
 {
 	stack[++top] = x;
 }
-
 char pop()
 {
 	if(top == -1)
@@ -16,7 +13,6 @@ char pop()
 	return stack[top--];
 	
 }
-
 int priority(char x)
 {
 	if(x == '(')
@@ -27,7 +23,6 @@ int priority(char x)
 		return 2;
 	return 0;
 }
-
 void main()
 {
 	char input[25], postfix[25], *e, x;
@@ -53,7 +48,6 @@ void main()
 	while(top != -1)
 		postfix[i++] = pop();
 	postfix[i] = '\0';
-	
 	int add;
 	printf("Enter starting address: ");
 	scanf("%d", &add);

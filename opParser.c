@@ -1,10 +1,8 @@
 #include<stdio.h>
 #include<string.h>
-
 int n = 6, ind, top, accept;
 char terminals[10], input[25], stack[10];
 char opTable[10][10];
-
 int search(char ch)
 {
 	int p;
@@ -13,7 +11,6 @@ int search(char ch)
 			p = i;
 	return p;
 }
-
 void main()
 {
 	printf("Enter number of terminals: ");
@@ -21,26 +18,22 @@ void main()
 	printf("Enter the terminals:\n");
 	for(int i = 0; i < n; ++i)
 		scanf(" %c", &terminals[i]);
-	
 	printf("Enter the OP Table\n");
 	for(int i = 0; i < n; ++i)
 		for(int j = 0; j < n; ++j) {
 			printf("%c - %c: ", terminals[i], terminals[j]);
 			scanf(" %c", &opTable[i][j]);
 		}
-	
 	while(1) {
 		memset(stack, 0, sizeof(stack));
 		memset(input, 0, sizeof(input));
 		ind = 0;
 		top = -1;
 		accept = 1;
-		
 		printf("Enter input (including $ on both ends) or 'exit' to exit: ");
 		scanf("%s", input);
 		if(strcmp(input, "exit") == 0)
 			break;
-			
 		stack[++top] = input[ind++];
 		while(!(stack[top] == '$' && input[ind] == '$')) {
 			int x = search(stack[top]);
@@ -58,7 +51,6 @@ void main()
 				break;
 			}
 		}	
-		
 		if(accept == 1)
 			printf("\nInput accepted\n\n");
 		else

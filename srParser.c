@@ -1,8 +1,6 @@
 #include<stdio.h>
-
 char input[15], stack[15];
 int ind = 0, sl = 1, top = 0;
-
 void reduce()
 {
 	for(int j = 0; j < top; ++j)
@@ -41,11 +39,9 @@ void main()
 {
 	printf("Enter input: ");
 	scanf("%s", input);
-	
 	printf("\nSl No\tStack\tInput     \tAction\n------------------------------------------------\n");
 	printf("%d\t$%s\t%s$\t\t-\n", sl, stack, input);
 	sl++;
-	
 	while(input[ind] != '\0') {
 		stack[top++] = input[ind];
 		stack[top] = '\0';
@@ -54,7 +50,6 @@ void main()
 		sl++;
 		reduce();
 	}
-	
 	if(stack[0] == 'E' && stack[1] == '\0')
 		printf("\nInput accepted\n");
 	else

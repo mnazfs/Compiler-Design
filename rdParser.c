@@ -1,14 +1,11 @@
 #include<stdio.h>
-
 int j = 0;
 char input[25];
-
 int E();
 int E1();
 int T();
 int T1();
 int F();
-
 void main()
 {
 	printf("Enter input: ");
@@ -19,7 +16,6 @@ void main()
 	else
 		printf("\nInput is rejected\n");
 }
-
 int E()
 {
 	printf("Expanding E -> TE1\n");
@@ -31,7 +27,6 @@ int E()
 	} else 
 		return 0;
 }
-
 int E1()
 {
 	if(input[j] == '+') {
@@ -50,7 +45,6 @@ int E1()
 		return 1;
 	}
 }
-
 int T()
 {
 	printf("Expanding T -> FT1\n");
@@ -62,7 +56,6 @@ int T()
 	} else
 		return 0;
 }
-
 int T1()
 {
 	if(input[j] == '*') {
@@ -81,7 +74,6 @@ int T1()
 		return 1;
 	}
 }
-
 int F()
 {
 	if(input[j] == '(') {
@@ -105,4 +97,3 @@ int F()
 	} else
 		return 0;
 }
-
